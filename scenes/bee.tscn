@@ -1,9 +1,64 @@
-[gd_scene load_steps=10 format=3 uid="uid://cgvp8vbeul1mu"]
+[gd_scene load_steps=15 format=3 uid="uid://cgvp8vbeul1mu"]
 
-[ext_resource type="Script" uid="uid://bk2wfk8anx4i" path="res://scenes/bee.gd" id="1_qf6nb"]
+[ext_resource type="Script" uid="uid://bk2wfk8anx4i" path="res://scripts/bee.gd" id="1_qf6nb"]
 [ext_resource type="Texture2D" uid="uid://dtx5y0iwfcg2h" path="res://assets/stripes.png" id="1_vie5o"]
 [ext_resource type="Texture2D" uid="uid://dkuyssjxyms35" path="res://assets/face.png" id="2_ogg2i"]
 [ext_resource type="Texture2D" uid="uid://bxdorloea4bpj" path="res://assets/winga.png" id="3_ogg2i"]
+[ext_resource type="AudioStream" uid="uid://bulyax85ewfj3" path="res://assets/single-mosquito-buzz-69360.mp3" id="5_oynbf"]
+
+[sub_resource type="Shader" id="Shader_66jco"]
+code = "shader_type canvas_item;
+render_mode world_vertex_coords;
+
+group_uniforms Squiggle;
+/**
+ * Noise texture scale
+ * By default, the noise texture's size in world coordinates is set by its resolution
+*/
+uniform vec2 scale = vec2(1.0);
+uniform float strength = 1.0;
+/**
+ * Number of squiggle frames per second
+*/
+uniform float fps = 6.0;
+uniform sampler2D noise : filter_linear, repeat_enable;
+group_uniforms;
+
+varying vec4 modulate;
+varying vec2 noise_uv;
+
+void vertex() {
+	modulate = COLOR;
+	
+	// Use world coordinates for scale-independent squiggles, offset by position to keep pattern attached to object
+	noise_uv = (VERTEX - MODEL_MATRIX[3].xy) / (vec2(textureSize(noise, 0)) * scale);
+}
+
+// Use irrational constants for unique squiggles every frame
+#define offset_multiplier vec2(PI, E)
+
+void fragment() {
+	vec2 noise_offset = vec2(floor(TIME * fps)) * offset_multiplier;
+	float noise_sample = texture(noise, noise_uv + noise_offset).r * 4.0 * PI;
+	vec2 direction = vec2(cos(noise_sample), sin(noise_sample));
+	vec2 squiggle_uv = UV + direction * strength * 0.005;
+	
+	COLOR = texture(TEXTURE, squiggle_uv) * modulate;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_qf6nb"]
+frequency = 0.0152
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oynbf"]
+noise = SubResource("FastNoiseLite_qf6nb")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nkr4b"]
+shader = SubResource("Shader_66jco")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 2.0
+shader_parameter/fps = 5.0
+shader_parameter/noise = SubResource("NoiseTexture2D_oynbf")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qf6nb"]
 radius = 68.0
@@ -282,6 +337,7 @@ _data = {
 }
 
 [node name="bee" type="CharacterBody2D"]
+material = SubResource("ShaderMaterial_nkr4b")
 script = ExtResource("1_qf6nb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -289,14 +345,17 @@ visible = false
 shape = SubResource("CapsuleShape2D_qf6nb")
 
 [node name="Stripes" type="Sprite2D" parent="."]
+use_parent_material = true
 texture = ExtResource("1_vie5o")
 
 [node name="Face" type="Sprite2D" parent="Stripes"]
+use_parent_material = true
 position = Vector2(-53, -58)
 texture = ExtResource("2_ogg2i")
 
 [node name="Winga" type="Sprite2D" parent="Stripes"]
 modulate = Color(1, 1, 1, 0.7294118)
+use_parent_material = true
 position = Vector2(24, 9)
 texture = ExtResource("3_ogg2i")
 offset = Vector2(29, -24)
@@ -306,3 +365,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_kro73")
 }
 autoplay = "right"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_oynbf")
+volume_db = -5.049
+pitch_scale = 1.85
+autoplay = true
+attenuation = 0.4999999
+panning_strength = 2.5
