@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://etcpkiotjjs1"
-path="res://.godot/imported/wingb.png-5004b149bbd0162d5b0a67f9e7b085eb.ctex"
+path.s3tc="res://.godot/imported/wingb.png-5004b149bbd0162d5b0a67f9e7b085eb.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/wingb.png"
-dest_files=["res://.godot/imported/wingb.png-5004b149bbd0162d5b0a67f9e7b085eb.ctex"]
+dest_files=["res://.godot/imported/wingb.png-5004b149bbd0162d5b0a67f9e7b085eb.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0

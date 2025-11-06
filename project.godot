@@ -19,3 +19,9 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=960
 window/size/viewport_height=2079
+
+[importer_defaults]
+
+texture={
+&"compress/mode": 2
+}

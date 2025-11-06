@@ -40,3 +40,5 @@ texture = ExtResource("2_sugp2")
 [node name="bee" parent="." instance=ExtResource("7_ya4ey")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -40)
+zoom = Vector2(1.12, 1.12)

@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxdorloea4bpj"
-path="res://.godot/imported/winga.png-7038770ee7978e719dfc9c060cba7375.ctex"
+path.s3tc="res://.godot/imported/winga.png-7038770ee7978e719dfc9c060cba7375.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/winga.png"
-dest_files=["res://.godot/imported/winga.png-7038770ee7978e719dfc9c060cba7375.ctex"]
+dest_files=["res://.godot/imported/winga.png-7038770ee7978e719dfc9c060cba7375.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
