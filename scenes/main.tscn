@@ -1,0 +1,42 @@
+[gd_scene load_steps=8 format=3 uid="uid://7b76h8kdrw8h"]
+
+[ext_resource type="Texture2D" uid="uid://bhqif4dh46noc" path="res://assets/landscape.png" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://dp51qa5ol211q" path="res://assets/clouda.png" id="2_o6xl0"]
+[ext_resource type="Texture2D" uid="uid://c83m0hxgub3ef" path="res://assets/plant.png" id="2_sugp2"]
+[ext_resource type="Texture2D" uid="uid://dcsfh0eird6dh" path="res://assets/cloudb.png" id="3_tipki"]
+[ext_resource type="Texture2D" uid="uid://b858cqkmwqxfs" path="res://assets/cloudc.png" id="4_85g3d"]
+[ext_resource type="Texture2D" uid="uid://cy5o8rqpj3uen" path="res://assets/cloudd.png" id="5_choun"]
+[ext_resource type="PackedScene" uid="uid://cgvp8vbeul1mu" path="res://scenes/bee.tscn" id="7_ya4ey"]
+
+[node name="main" type="Node2D"]
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+position = Vector2(0, 500)
+
+[node name="Landscape" type="Sprite2D" parent="."]
+clip_children = 2
+texture = ExtResource("1_0wfyh")
+
+[node name="Clouda" type="Sprite2D" parent="Landscape"]
+position = Vector2(252, -626)
+texture = ExtResource("2_o6xl0")
+
+[node name="Cloudb" type="Sprite2D" parent="Landscape"]
+position = Vector2(-282, -329)
+texture = ExtResource("3_tipki")
+
+[node name="Cloudc" type="Sprite2D" parent="Landscape"]
+position = Vector2(-244, -688)
+texture = ExtResource("4_85g3d")
+
+[node name="Cloudd" type="Sprite2D" parent="Landscape"]
+position = Vector2(248, -309)
+texture = ExtResource("5_choun")
+
+[node name="Plant" type="Sprite2D" parent="."]
+position = Vector2(-4.3, -41.45)
+texture = ExtResource("2_sugp2")
+
+[node name="bee" parent="." instance=ExtResource("7_ya4ey")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
