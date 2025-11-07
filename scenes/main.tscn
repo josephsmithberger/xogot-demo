@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://7b76h8kdrw8h"]
+[gd_scene load_steps=14 format=3 uid="uid://7b76h8kdrw8h"]
 
 [ext_resource type="Texture2D" uid="uid://bhqif4dh46noc" path="res://assets/landscape.png" id="1_0wfyh"]
 [ext_resource type="Material" uid="uid://b0aoltqk5eyd6" path="res://scenes/handdrawn_shader.tres" id="1_tipki"]
@@ -7,7 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dcsfh0eird6dh" path="res://assets/cloudb.png" id="3_tipki"]
 [ext_resource type="Texture2D" uid="uid://b858cqkmwqxfs" path="res://assets/cloudc.png" id="4_85g3d"]
 [ext_resource type="Texture2D" uid="uid://cy5o8rqpj3uen" path="res://assets/cloudd.png" id="5_choun"]
+[ext_resource type="Script" uid="uid://bvsmtq2mctg37" path="res://scripts/cloud_scroll.gd" id="6_cloud"]
 [ext_resource type="PackedScene" uid="uid://cgvp8vbeul1mu" path="res://scenes/bee.tscn" id="7_ya4ey"]
+[ext_resource type="AudioStream" uid="uid://dj1ufyxrwx8ke" path="res://assets/AmbientNatureOutside.wav" id="9_85g3d"]
 
 [sub_resource type="Animation" id="Animation_85g3d"]
 length = 0.001
@@ -89,6 +91,7 @@ color = Color(0.8235294, 0.59607846, 0, 1)
 clip_children = 2
 use_parent_material = true
 texture = ExtResource("1_0wfyh")
+script = ExtResource("6_cloud")
 
 [node name="Clouda" type="Sprite2D" parent="Landscape"]
 use_parent_material = true
@@ -130,3 +133,13 @@ speed_scale = 0.2
 offset = Vector2(0, -40)
 zoom = Vector2(0.95, 0.95)
 limit_enabled = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_85g3d")
+volume_db = 24.0
+autoplay = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(-433, -898, -461, 924, 455, 906, 442, -909, -421, -903, 518, -960, 502, 1029, -528, 1044, -504, -1036)

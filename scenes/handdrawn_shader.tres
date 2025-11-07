@@ -44,8 +44,8 @@ void fragment() {
 frequency = 0.0115
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_j3dai"]
-seamless = true
 noise = SubResource("FastNoiseLite_kbwjl")
+seamless = true
 
 [resource]
 shader = SubResource("Shader_66jco")

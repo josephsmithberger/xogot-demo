@@ -42,11 +42,6 @@ texture = SubResource("ViewportTexture_6wqfc")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="viewport" type="TextureRect" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
 [node name="SubViewport" type="SubViewport" parent="."]
 disable_3d = true
 transparent_bg = true

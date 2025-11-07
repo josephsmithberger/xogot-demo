@@ -53,4 +53,8 @@ func _physics_process(delta: float) -> void:
 		buzz_velocity = buzz_velocity.normalized() * MAX_SPEED * 1.2
 	
 	velocity = buzz_velocity
+	
+	# Adjust pitch based on speed
+	audio_player.pitch_scale = 0.9 + (velocity.length() / MAX_SPEED) * 0.6
+	
 	move_and_slide()

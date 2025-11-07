@@ -12,7 +12,7 @@ config_version=5
 
 config/name="xogot-demo"
 run/main_scene="uid://yq26d7dxk847"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
@@ -25,10 +25,6 @@ window/size/viewport_height=2079
 texture={
 &"compress/mode": 2
 }
-
-[rendering]
-
-renderer/rendering_method="forward_plus"
 
 [xogot]
 
