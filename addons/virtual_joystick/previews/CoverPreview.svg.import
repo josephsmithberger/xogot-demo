@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://6cxrgq4pd6qf"
-path="res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"
+uid="uid://hv7g5ip77oel"
+path.etc2="res://.godot/imported/CoverPreview.svg-7c17dc7ed6007b5f94a5e30c30227a42.etc2.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["etc2_astc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://icon.svg"
-dest_files=["res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex"]
+source_file="res://addons/virtual_joystick/previews/CoverPreview.svg"
+dest_files=["res://.godot/imported/CoverPreview.svg-7c17dc7ed6007b5f94a5e30c30227a42.etc2.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
